@@ -1,0 +1,118 @@
+using ACM.BL;
+
+namespace ACM.BLUnitTest
+{
+    public class CustomerUnitTest
+    {
+        [Fact]
+        public void FullNameTestValid()
+        {
+            // Arrange
+            Customer customer = new()
+            {
+                FirstName = "Bilbo",
+                LastName = "Baggins"
+            };
+
+            string expected = "Baggins, Bilbo";
+
+            // Act
+            string actual = customer.FullName;
+
+            // Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void FullNameFirstNameEmpty()
+        {
+            // Arrange
+            Customer customer = new()
+            {
+                LastName = "Baggins"
+            };
+            string expected = "Baggins";
+
+            // Act
+            string actual = customer.FullName;
+
+            // Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void FullNameLastNameEmpty()
+        {
+            // Arrange
+            Customer customer = new()
+            {
+                LastName = "Bilbo"
+            };
+            string expected = "Bilbo";
+
+            // Act
+            string actual = customer.FullName;
+
+            // Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void InstanceCountTest()
+        {
+            // Arrange
+            var c1 = new Customer();
+            c1.FirstName = "Bilbo";
+            Customer.InstanceCount += 1;
+
+            var c2 = new Customer();
+            c1.FirstName = "Frodo";
+            Customer.InstanceCount += 1;
+
+            var c3 = new Customer();
+            c1.FirstName = "Sam";
+            Customer.InstanceCount += 1;
+
+            // Act
+
+            // Assert
+            Assert.Equal(3, Customer.InstanceCount); 
+        }
+
+        [Fact]
+        public void ValidateValid()
+        {
+            // Arrange
+            var customer = new Customer
+            {
+                LastName = "Baggins",
+                EmailAdress = "baggings.com"
+            };
+
+            bool expected = true;
+            // Act
+            bool actual = customer.Validate();
+
+            // Assert
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
+        public void ValidateMissingLastName()
+        {
+            // Arrange
+            var customer = new Customer
+            {
+                EmailAdress = "baggings.com"
+            };
+
+            bool expected = false;
+
+            // Act
+            bool actual = customer.Validate();
+
+            // Assert
+            Assert.Equal(expected, actual);
+        }
+    }
+}
