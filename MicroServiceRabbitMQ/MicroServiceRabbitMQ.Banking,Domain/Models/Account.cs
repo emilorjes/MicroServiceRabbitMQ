@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MicroServiceRabbitMQ.Banking_Domain.Models
+namespace MicroServiceRabbitMQ.Banking.Domain.Models
 {
     public class Account
     {

@@ -1,4 +1,4 @@
-﻿using MicroServiceRabbitMQ.Banking_Domain.Models;
+﻿using MicroServiceRabbitMQ.Banking.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace MicroServiceRabbitMQ.Banking.Data.Context

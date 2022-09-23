@@ -1,6 +1,6 @@
 ﻿using MicroServiceRabbitMQ.Banking.Application.Interfaces;
-using MicroServiceRabbitMQ.Banking_Domain.Interfaces;
-using MicroServiceRabbitMQ.Banking_Domain.Models;
+using MicroServiceRabbitMQ.Banking.Domain.Interfaces;
+using MicroServiceRabbitMQ.Banking.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
