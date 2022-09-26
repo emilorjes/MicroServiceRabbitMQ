@@ -15,7 +15,6 @@ namespace MicroServiceRabbitMQ.Banking.Api.Controllers
             _accountService = accountService;
         }
 
-        // GET api/banking
         [HttpGet]
         public ActionResult<IEnumerable<Account>> Get()
         {
@@ -25,7 +24,7 @@ namespace MicroServiceRabbitMQ.Banking.Api.Controllers
         [HttpPost]
         public ActionResult Post([FromBody] AccountTransferDTO accountTransfer)
         {
-            
+            _accountService.Transfer(accountTransfer);
             return Ok(accountTransfer);
         }
     }
