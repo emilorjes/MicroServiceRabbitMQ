@@ -7,6 +7,6 @@ namespace MicroServiceRabbitMQ.Banking.Data.Context
     {
         public BankingDbContext(DbContextOptions options) : base(options) { }
 
-        public System.Data.Entity.DbSet<Account> Accounts { get; set; }
+        public DbSet<Account> Accounts { get; set; }
     }
 }
