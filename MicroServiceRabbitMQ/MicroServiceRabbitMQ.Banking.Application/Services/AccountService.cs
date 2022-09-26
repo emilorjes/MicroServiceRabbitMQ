@@ -1,4 +1,5 @@
-﻿using MicroServiceRabbitMQ.Banking.Application.Interfaces;
+﻿using MicroServiceRabbitMQ.Banking.Application.DTOs;
+using MicroServiceRabbitMQ.Banking.Application.Interfaces;
 using MicroServiceRabbitMQ.Banking.Domain.Interfaces;
 using MicroServiceRabbitMQ.Banking.Domain.Models;
 using System;
@@ -21,6 +22,11 @@ namespace MicroServiceRabbitMQ.Banking.Application.Services
         public IEnumerable<Account> GetAccounts()
         {
            return _accountRepository.GetAccounts();
+        }
+
+        public void Transfer(AccountTransferDTO accountTransfer)
+        {
+            
         }
     }
 }
