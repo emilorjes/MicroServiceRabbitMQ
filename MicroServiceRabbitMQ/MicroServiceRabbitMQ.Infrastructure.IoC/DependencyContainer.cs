@@ -8,6 +8,11 @@ using MicroServiceRabbitMQ.Banking_Domain.CommandHandlers;
 using MicroServiceRabbitMQ.Banking_Domain.Commands;
 using MicroServiceRabbitMQ.Domain.Core.Bus;
 using MicroServiceRabbitMQ.Infrastructure.Bus;
+using MicroServiceRabbitMQ.Transfer.Application.Interface;
+using MicroServiceRabbitMQ.Transfer.Application.Services;
+using MicroServiceRabbitMQ.Transfer.Data.Context;
+using MicroServiceRabbitMQ.Transfer.Data.Repository;
+using MicroServiceRabbitMQ.Transfer.Domain.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -29,10 +34,13 @@ namespace MicroServiceRabbitMQ.Infrastructure.IoC
 
             // Application Services
             services.AddTransient<IAccountService, AccountService>();
+            services.AddTransient<ITransferService, TransferService>();
 
             // Data
             services.AddTransient<IAccountRepository, AccountRepository>();
+            services.AddTransient<ITransferRepository, TransferRepository>();
             services.AddTransient<BankingDbContext>();
+            services.AddTransient<TransferDbContext>();
         }
     }
 }

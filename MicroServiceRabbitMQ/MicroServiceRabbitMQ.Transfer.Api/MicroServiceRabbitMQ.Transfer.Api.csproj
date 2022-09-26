@@ -20,4 +20,9 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MicroServiceRabbitMQ.Infrastructure.IoC\MicroServiceRabbitMQ.Infrastructure.IoC.csproj" />
+    <ProjectReference Include="..\MicroServiceRabbitMQ.Transfer.Data\MicroServiceRabbitMQ.Transfer.Data.csproj" />
+  </ItemGroup>
+
 </Project>
