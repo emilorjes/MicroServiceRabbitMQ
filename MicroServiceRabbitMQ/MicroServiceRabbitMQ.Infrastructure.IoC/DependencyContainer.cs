@@ -29,7 +29,14 @@ namespace MicroServiceRabbitMQ.Infrastructure.IoC
         public static void RegisterServices(IServiceCollection services)
         {
             // Domain EventBus
-            services.AddTransient<IEventBus, RabbitMQBus>();
+            services.AddSingleton<IEventBus, RabbitMQBus>(serviceProvider => 
+            {
+                var scopedFactory = serviceProvider.GetRequiredService<IServiceScopeFactory>();
+                return new RabbitMQBus(serviceProvider.GetService<IMediator>(), scopedFactory);
+            });
+
+            // Subscriptions
+            services.AddTransient<TransferEventHandler>();
 
             // Domain Events
             services.AddTransient<IEventHandler<TransferCreatedEvent>, TransferEventHandler>();
