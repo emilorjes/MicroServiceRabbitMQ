@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MediatR;
+using MicroServiceRabbitMQ.Domain.Core.Bus;
 using MicroServiceRabbitMQ.Infrastructure.IoC;
 using MicroServiceRabbitMQ.Transfer.Data.Context;
+using MicroServiceRabbitMQ.Transfer.Domain.EventHandlers;
+using MicroServiceRabbitMQ.Transfer.Domain.Events;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
@@ -68,6 +71,14 @@ namespace MicroServiceRabbitMQ.Banking.Api
             });
 
             app.UseMvc();
+
+            ConfigureEventBus(app);
+        }
+
+        private void ConfigureEventBus(IApplicationBuilder app)
+        {
+            var eventBus = app.ApplicationServices.GetRequiredService<IEventBus>();
+            eventBus.Subscribe<TransferCreatedEvent, TransferEventHandler>();
         }
     }
 }

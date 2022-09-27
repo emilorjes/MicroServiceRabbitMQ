@@ -12,7 +12,9 @@ using MicroServiceRabbitMQ.Transfer.Application.Interface;
 using MicroServiceRabbitMQ.Transfer.Application.Services;
 using MicroServiceRabbitMQ.Transfer.Data.Context;
 using MicroServiceRabbitMQ.Transfer.Data.Repository;
+using MicroServiceRabbitMQ.Transfer.Domain.Events;
 using MicroServiceRabbitMQ.Transfer.Domain.Interfaces;
+using MicroServiceRabbitMQ.Transfer.Domain.EventHandlers;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -28,6 +30,9 @@ namespace MicroServiceRabbitMQ.Infrastructure.IoC
         {
             // Domain EventBus
             services.AddTransient<IEventBus, RabbitMQBus>();
+
+            // Domain Events
+            services.AddTransient<IEventHandler<TransferCreatedEvent>, TransferEventHandler>();
 
             // Domain Banking Commands
             services.AddTransient<IRequestHandler<CreateTransferCommand, bool>, TransferCommandHandler>();
