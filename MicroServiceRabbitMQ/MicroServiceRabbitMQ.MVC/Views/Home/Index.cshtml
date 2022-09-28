@@ -6,3 +6,14 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
+<form action="home/transfer" method="post">
+    <label for="AccountSource">Account Source:</label>
+    <input type="text" name="AccountSource"/>
+    <label for="AccountDestination">Account Destination:</label>
+    <input type="text" name="AccountDestination"/>
+    <label for="TransferAmount">Transfer Amount:</label>
+    <input type="text" name="TransferAmount"/>
+    <input type="submit" name="Transfer"/>
+    
+</form>
